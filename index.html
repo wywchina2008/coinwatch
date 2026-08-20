@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>CoinWatch</title>
+<style>
+ body { font-family: -apple-system, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { color: #0b6bcb; } table { border-collapse: collapse; width: 100%; margin-top: 16px; }
+ td, th { border: 1px solid #ddd; padding: 8px; text-align: left; }
+ input[type=text] { width: 100%; padding: 10px; font-size: 16px; margin: 8px 0; }
+ button { padding: 10px 20px; font-size: 16px; background: #0b6bcb; color: #fff; border: 0; border-radius: 6px; cursor: pointer; }
+ .echo { background: #e8f4e8; border: 1px solid #9c9; padding: 12px; border-radius: 6px; margin-top: 16px; }
+ .nav { margin-top: 24px; font-size: 14px; } .nav a { color: #0b6bcb; margin-right: 12px; }
+</style></head><body>
+<h1>CoinWatch</h1>
+<p>A lightweight cryptocurrency price tracker. Live prices are collected from the CoinGecko public API.</p>
+<form id="echoform">
+  <label for="note"><b>Your watchlist note</b> (type anything — the app echoes it back):</label>
+  <input type="text" id="note" name="note" placeholder="e.g. buy bitcoin below 60000" required>
+  <button type="submit">Echo my note</button>
+</form>
+<div class="echo" id="echo" style="display:none"></div>
+<h2>Latest prices</h2>
+<table><tr><th>Coin</th><th>Price (USD)</th><th>Fetched at (UTC)</th></tr>
+<tr><td>bitcoin</td><td>72693.0</td><td>2026-08-20T20:10:33.277135+00:00</td></tr>
+<tr><td>ethereum</td><td>2323.77</td><td>2026-08-20T20:10:33.277526+00:00</td></tr>
+<tr><td>solana</td><td>87.31</td><td>2026-08-20T20:10:33.277617+00:00</td></tr>
+<tr><td>dogecoin</td><td>0.079796</td><td>2026-08-20T20:10:33.277693+00:00</td></tr>
+<tr><td>cardano</td><td>0.195812</td><td>2026-08-20T20:10:33.277763+00:00</td></tr>
+</table>
+<div class="nav"><a href="health">/health</a><a href="metrics">/metrics</a><a href="prices.json">/prices (JSON)</a></div>
+<script>
+document.getElementById('echoform').addEventListener('submit', function(e){
+  e.preventDefault();
+  var v = document.getElementById('note').value;
+  var d = document.getElementById('echo');
+  d.style.display='block';
+  d.textContent = 'You wrote: ' + v;
+});
+</script>
+</body></html>
+
